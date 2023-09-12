@@ -35,7 +35,7 @@ set head off
 set lines 2000
 alter session set container=$PDB;
 SELECT
-  'alter database datafile ' || CHR (39) || df.name || CHR (39) || ' $OPERATION /*;' || round (bytes / 1024 / 1024 / 1024,2) || ' GB;*/;' command
+  'alter database datafile ' || CHR (39) || df.name || CHR (39) || ' $OPERATION /*;' || round (bytes / 1024 / 1024 / 1024,2) || ' GB;*/' command
 FROM
   v\$tablespace ts
  ,v\$datafile_header   df
@@ -129,9 +129,9 @@ status=$?
 #
 #     CDB and PDB hardcoded here for tests
 #
-DB=IFOPEURC
-PDB=IFOPEUR
-MAX_JOBS=100        # 50 encryption at a time is barely noticeable on the machine
+DB=RFOPAMEC
+PDB=RFOPAME
+MAX_JOBS=75         # 50 encryption at a time is barely noticeable on the machine
 OPERATION=ENCRYPT   # Can be encrypt or decrypt
 
 SCRIPT=$(basename $0 .sh)
